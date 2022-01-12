@@ -32,7 +32,7 @@ class MyComponent extends React.Component {
   }
   render() {
     const usersOnline = this.state.users.filter((user) => user.online); // Change this line
-    const renderOnline = usersOnline.map((user, username) => {
+    const renderOnline = usersOnline.map((user) => {
       return <li key={user.username}>{user.username}</li>;
     }); // Change this line
     return (

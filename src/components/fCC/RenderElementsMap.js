@@ -15,17 +15,20 @@ class MyToDoList extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+  
   handleSubmit() {
     const itemsArray = this.state.userInput.split(",");
     this.setState({
       toDoList: itemsArray,
     });
   }
+  
   handleChange(e) {
     this.setState({
       userInput: e.target.value,
     });
   }
+
   render() {
     const items = this.state.toDoList.map((task) => {
       return <li>{task}</li>;
