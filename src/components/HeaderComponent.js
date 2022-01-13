@@ -8,20 +8,20 @@ import {
   NavItem,
   Jumbotron,
 } from "reactstrap";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isNavOpen: false
+      isNavOpen: false,
     };
     this.toggleNav = this.toggleNav.bind(this);
   }
 
   toggleNav() {
     this.setState({
-      isNavOpen: !this.state.isNavOpen
+      isNavOpen: !this.state.isNavOpen,
     });
   }
 
@@ -30,7 +30,7 @@ class Header extends Component {
       <>
         <Navbar dark expand="md">
           <div className="container">
-          <NavbarToggler onClick={this.toggleNav} />
+            <NavbarToggler onClick={this.toggleNav} />
             <NavbarBrand className="mr-auto" href="/">
               <img
                 src="assets/images/logo.png"
