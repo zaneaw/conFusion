@@ -21,9 +21,7 @@ function RenderMenuItem({ dish, onClick }) {
     </Card>
   );
 }
-{
-  /* Above and below are 2 different ways to create functional components */
-}
+{/* Above and below are 2 different ways to create functional components */}
 const Menu = (props) => {
   const menu = props.dishes.map((dish) => {
     return (
