@@ -8,7 +8,7 @@ import Menu from "./MenuComponent";
 import DishDetail from "./DishdetailComponent";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { addComment } from "../redux/ActionCreators";
+import { addComment, fetchDishes } from "../redux/ActionCreators";
 
 const mapStateToProps = (state) => {
   return {
@@ -22,10 +22,14 @@ const mapStateToProps = (state) => {
 /* 
 Dispatch is the dispatch function from ../redux/configureStore.js
 the addComment function call will return the action call for the dispatch function
+
+fetchDishes:
+dispatch the thunk by using dispatch in order to do the dispatch
 */
 const mapDispatchToProps = (dispatch) => ({
   addComment: (dishId, rating, author, comment) => {
-    dispatch(addComment(dishId, rating, author, comment));
+    dispatch(addComment(dishId, rating, author, comment))
+    fetchDishes: () => {dispatch(fetchDishes())} // thunk
   },
 });
 
@@ -85,4 +89,10 @@ class Main extends Component {
   }
 }
 
+// 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
+/*
+connect(arg1, arg2) explained:
+https://react-redux.js.org/using-react-redux/connect-mapstate
+https://react-redux.js.org/using-react-redux/connect-mapdispatch
+*/
