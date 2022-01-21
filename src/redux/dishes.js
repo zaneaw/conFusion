@@ -20,7 +20,7 @@ export const Dishes = (
         ...state,
         isLoading: false,
         errMess: null,
-        dishes: [action.payload],
+        dishes: action.payload,
       };
     // see below for explanation on ...state
     case ActionTypes.DISHES_LOADING:

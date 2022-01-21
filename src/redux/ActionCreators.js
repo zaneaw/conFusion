@@ -30,24 +30,25 @@ Remember that you're passing dispatch as a parameter to this special action crea
 */
 
 // this is a thunk function, or a thunk func, or even a thunktion
+// async function
 export const fetchDishes = () => (dispatch) => {
   dispatch(dishesLoading(true));
 
   setTimeout(() => {
-    dispatch(addDishes(DISHES))
-  }, 2000)
-}
+    dispatch(addDishes(DISHES));
+  }, 2000);
+};
 
 export const dishesLoading = () => ({
-  type: ActionTypes.DISHES_LOADING
+  type: ActionTypes.DISHES_LOADING,
 });
 
 export const dishesFailed = (errmess) => ({
   type: ActionTypes.DISHES_FAILED,
-  payload: errmess // errmess is a string
-})
+  payload: errmess, // errmess is a string
+});
 
 export const addDishes = (dishes) => ({
   type: ActionTypes.ADD_DISHES,
-  payload: dishes
-})
+  payload: dishes,
+});
