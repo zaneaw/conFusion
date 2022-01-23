@@ -1,7 +1,7 @@
 import * as ActionTypes from "./ActionTypes";
 
 /*
-Initially, isLoading is set to true because the dishses array is currently empty.
+Initially, isLoading is set to true because the dishes array is currently empty.
 errMess will only change when it receives a message from the ActionTypes below.
 if the data for the dishes array is received correctly, then the array will be 
 populated with the info about the dishes.
