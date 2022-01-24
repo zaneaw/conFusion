@@ -42,7 +42,7 @@ const Home = (props) => {
           <RenderCard
             item={props.dish}
             isLoading={props.dishesLoading}
-            errMess={props.dishesErrMess}
+            errMess={props.dishErrMess}
           />
           {/* See MainComponent.js -> HomePage function */}
         </div>
