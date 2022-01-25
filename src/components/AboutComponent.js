@@ -13,7 +13,6 @@ import { baseUrl } from "../shared/baseUrl";
 import { Fade, Stagger } from "react-animation-components";
 
 const RenderLeaders = ({ leaders }) => {
-  console.log(leaders.leaders);
   const leader = leaders.leaders.map((leader) => {
     return (
       <Fade in>
