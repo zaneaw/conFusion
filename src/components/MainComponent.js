@@ -7,11 +7,18 @@ import Header from "./HeaderComponent";
 import Home from "./HomeComponent";
 import Menu from "./MenuComponent";
 import DishDetail from "./DishdetailComponent";
-import { postComment, fetchDishes, fetchComments, fetchPromos } from "../redux/ActionCreators";
+import {
+  postComment,
+  postFeedback,
+  fetchDishes,
+  fetchComments,
+  fetchPromos,
+  fetchLeaders,
+} from "../redux/ActionCreators";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { actions } from "react-redux-form";
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 // Redux
 const mapStateToProps = (state) => {
@@ -33,10 +40,43 @@ dispatch the thunk by using dispatch in order to do the dispatch
 const mapDispatchToProps = (dispatch) => ({
   postComment: (dishId, rating, author, comment) =>
     dispatch(postComment(dishId, rating, author, comment)),
-  fetchDishes: () => {dispatch(fetchDishes());},
-  resetFeedbackForm: () => {dispatch(actions.reset("feedback"));},
-  fetchComments: () => {dispatch(fetchComments());},
-  fetchPromos: () => {dispatch(fetchPromos());},
+  postFeedback: (
+    firstname,
+    lastname,
+    telnum,
+    email,
+    agree,
+    contactType,
+    message,
+    id
+  ) =>
+    dispatch(
+      postFeedback(
+        firstname,
+        lastname,
+        telnum,
+        email,
+        agree,
+        contactType,
+        message,
+        id
+      )
+    ),
+  fetchDishes: () => {
+    dispatch(fetchDishes());
+  },
+  resetFeedbackForm: () => {
+    dispatch(actions.reset("feedback"));
+  },
+  fetchComments: () => {
+    dispatch(fetchComments());
+  },
+  fetchPromos: () => {
+    dispatch(fetchPromos());
+  },
+  fetchLeaders: () => {
+    dispatch(fetchLeaders());
+  },
 });
 
 class Main extends Component {
@@ -48,6 +88,7 @@ class Main extends Component {
     this.props.fetchDishes();
     this.props.fetchComments();
     this.props.fetchPromos();
+    this.props.fetchLeaders();
   }
 
   render() {
@@ -57,10 +98,18 @@ class Main extends Component {
           dish={this.props.dishes.dishes.filter((dish) => dish.featured)[0]}
           dishesLoading={this.props.dishes.isLoading}
           dishErrMess={this.props.dishes.errMess}
-          promotion={this.props.promotions.promotions.filter((promo) => promo.featured)[0]}
+          promotion={
+            this.props.promotions.promotions.filter(
+              (promo) => promo.featured
+            )[0]
+          }
           promoLoading={this.props.promotions.isLoading}
           promoErrMess={this.props.promotions.errMess}
-          leader={this.props.leaders.filter((leader) => leader.featured)[0]}
+          leader={
+            this.props.leaders.leaders.filter((leader) => leader.featured)[0]
+          }
+          leadersLoading={this.props.leaders.isLoading}
+          leadersErrMess={this.props.leaders.errMess}
         />
       );
     };
@@ -88,7 +137,11 @@ class Main extends Component {
       <div>
         <Header />
         <TransitionGroup>
-          <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
+          <CSSTransition
+            key={this.props.location.key}
+            classNames="page"
+            timeout={300}
+          >
             <Switch>
               <Route path="/home" component={HomePage} />
               <Route
@@ -100,7 +153,10 @@ class Main extends Component {
                 path="/contactus"
                 component={() => {
                   return (
-                    <Contact resetFeedbackForm={this.props.resetFeedbackForm} />
+                    <Contact 
+                      resetFeedbackForm={this.props.resetFeedbackForm} 
+                      postFeedback={this.props.postFeedback}
+                    />
                   );
                 }}
               />

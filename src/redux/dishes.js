@@ -1,5 +1,4 @@
 import * as ActionTypes from "./ActionTypes";
-
 /*
 Initially, isLoading is set to true because the dishes array is currently empty.
 errMess will only change when it receives a message from the ActionTypes below.
@@ -37,7 +36,6 @@ export const Dishes = (
       return state;
   }
 };
-
 
 /*
 ...state    -

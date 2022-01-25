@@ -8,29 +8,44 @@ import {
   Media,
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import { Loading } from "./LoadingComponent";
+import { baseUrl } from "../shared/baseUrl";
+import { Fade, Stagger } from "react-animation-components";
 
-const RenderLeader = ({ leader }) => {
-  return (
-    <div className="col-12 mt-5">
-      <Media tag="li">
-        <Media left middle>
-          <Media object src={leader.image} alt={leader.name} />
-        </Media>
-        <Media body className="ml-5">
-          <Media heading>{leader.name}</Media>
-          <p>{leader.designation}</p>
-          <p>{leader.description}</p>
-        </Media>
-      </Media>
-    </div>
-  );
+const RenderLeaders = ({ leaders }) => {
+  console.log(leaders.leaders);
+  const leader = leaders.leaders.map((leader) => {
+    return (
+      <Fade in>
+        <div className="col-12 mt-5" key={leader.id}>
+          <Media tag="li">
+            <Media left middle>
+              <Media object src={baseUrl + leader.image} alt={leader.name} />
+            </Media>
+            <Media body className="ml-5">
+              <Media heading>{leader.name}</Media>
+              <p>{leader.designation}</p>
+              <p>{leader.description}</p>
+            </Media>
+          </Media>
+        </div>
+      </Fade>
+    );
+  });
+  if (leaders.isLoading) {
+    return <Loading />;
+  } else if (leaders.errMess) {
+    return <h4>{leaders.errMess}</h4>;
+  } else {
+    return (
+      <Stagger in>
+        {leader}
+      </Stagger>
+    );
+  }
 };
 
 function About(props) {
-  console.log(props)
-  const leaders = props.leaders.map((leader) => {
-    return <RenderLeader leader={leader} key={leader.id}/>;
-  });
   return (
     <div className="container">
       <div className="row">
@@ -106,7 +121,9 @@ function About(props) {
         <div className="col-12">
           <h2>Corporate Leadership</h2>
         </div>
-        <Media list>{leaders}</Media>
+        <Stagger in>
+          <RenderLeaders leaders={props.leaders} />
+        </Stagger>
       </div>
     </div>
   );
