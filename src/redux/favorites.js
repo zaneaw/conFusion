@@ -1,31 +1,36 @@
 import * as ActionTypes from "./ActionTypes";
 
-export const Promotions = (
+export const favorites = (
     state = {
         isLoading: true,
         errMess: null,
-        promotions: [],
+        favorites: null,
     },
     action
 ) => {
     switch (action.type) {
-        case ActionTypes.ADD_PROMOS:
+        case ActionTypes.ADD_FAVORITES:
             return {
                 ...state,
                 isLoading: false,
                 errMess: null,
-                promotions: action.payload,
+                favorites: action.payload,
             };
 
-        case ActionTypes.PROMOS_LOADING:
-            return { ...state, isLoading: true, errMess: null, promotions: [] };
+        case ActionTypes.FAVORITES_LOADING:
+            return {
+                ...state,
+                isLoading: true,
+                errMess: null,
+                favorites: null,
+            };
 
-        case ActionTypes.PROMOS_FAILED:
+        case ActionTypes.FAVORITES_FAILED:
             return {
                 ...state,
                 isLoading: false,
                 errMess: action.payload,
-                promotions: [],
+                favorites: null,
             };
 
         default:
