@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { Component } from "react";
 import {
     Breadcrumb,
@@ -80,7 +81,11 @@ class Contact extends Component {
                             >
                                 <i className="fa fa-phone"></i> Call
                             </a>
-                            <a role="button" className="btn btn-info">
+                            <a
+                                role="button"
+                                className="btn btn-info"
+                                href="https://www.skype.com/en/"
+                            >
                                 <i className="fa fa-skype"></i> Skype
                             </a>
                             <a
