@@ -15,7 +15,7 @@ import { Fade, Stagger } from "react-animation-components";
 function RenderLeader({ leader }) {
     return (
         <Media tag="li">
-            <Media left middle>
+            <Media left middle className="about--image--container">
                 <img
                     object
                     className="about--image"
@@ -79,20 +79,19 @@ function About(props) {
                 <div className="col-12 col-md-6">
                     <h2>Our History</h2>
                     <p>
-                        Started in 2010, Ristorante con Fusion quickly
-                        established itself as a culinary icon par excellence in
-                        Hong Kong. With its unique brand of world fusion cuisine
-                        that can be found nowhere else, it enjoys patronage from
-                        the A-list clientele in Hong Kong. Featuring four of the
+                        Started in 2022, Pizza by Zane quickly
+                        established itself as a three-star Michelin Restaurant. With its unique brand of pizza
+                        that can't be found anywhere else, it enjoys patronage from
+                        the A-list clientele in NYC. Featuring four of the
                         best three-star Michelin chefs in the world, you never
                         know what will arrive on your plate the next time you
                         visit us.
                     </p>
                     <p>
                         The restaurant traces its humble beginnings to{" "}
-                        <em>The Frying Pan</em>, a successful chain started by
+                        <em>The Pizza Pan</em>, a successful chain started by
                         our CEO, Mr. Peter Pan, that featured for the first time
-                        the world's best cuisines in a pan.
+                        the world's best pizza, but in a pan!
                     </p>
                 </div>
                 <div className="col-12 col-md-5">
@@ -103,13 +102,13 @@ function About(props) {
                         <CardBody>
                             <dl className="row p-1">
                                 <dt className="col-6">Started</dt>
-                                <dd className="col-6">3 Feb. 2013</dd>
+                                <dd className="col-6">April 1 2022</dd>
                                 <dt className="col-6">Major Stake Holder</dt>
-                                <dd className="col-6">HK Fine Foods Inc.</dd>
+                                <dd className="col-6">The Other Brothers</dd>
                                 <dt className="col-6">Last Year's Turnover</dt>
                                 <dd className="col-6">$1,250,375</dd>
                                 <dt className="col-6">Employees</dt>
-                                <dd className="col-6">40</dd>
+                                <dd className="col-6">14</dd>
                             </dl>
                         </CardBody>
                     </Card>

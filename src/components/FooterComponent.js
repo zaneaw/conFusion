@@ -26,20 +26,15 @@ function Footer(props) {
                     <div className="col-7 col-sm-5">
                         <h5>Our Address</h5>
                         <address>
-                            121, Clear Water Bay Road
+                            42 Fifth Avenue,
                             <br />
-                            Clear Water Bay, Kowloon
+                            New York, NY 10011
                             <br />
-                            HONG KONG
+                            <i className="fa fa-phone fa-lg"></i> (917) 555-5555
                             <br />
-                            <i className="fa fa-phone fa-lg"></i>: +852 1234
-                            5678
-                            <br />
-                            <i className="fa fa-fax fa-lg"></i>: +852 8765 4321
-                            <br />
-                            <i className="fa fa-envelope fa-lg"></i>:{" "}
-                            <a href="mailto:confusion@food.net">
-                                confusion@food.net
+                            <i className="fa fa-envelope fa-lg"></i>{" "}
+                            <a href="mailto:wilsonzanea@gmail.com">
+                                wilsonzanea@gmail.com
                             </a>
                         </address>
                     </div>
@@ -83,7 +78,7 @@ function Footer(props) {
                 </div>
                 <div className="row justify-content-center">
                     <div className="col-auto">
-                        <p>© Copyright 2018 Ristorante Con Fusion</p>
+                        <p>© Copyright 2022 Pizza by Zane</p>
                     </div>
                 </div>
             </div>

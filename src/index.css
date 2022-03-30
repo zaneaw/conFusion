@@ -12,7 +12,16 @@ code {
         monospace;
 }
 
-.about--image {
+.about--image--container {
     width: 105px;
     height: 105px;
+    position: relative;
+    overflow: hidden;
+    height: 0;
+    border-radius: 15px;
+}
+
+.about--image {
+    width: 140px;
+    height: auto;
 }
