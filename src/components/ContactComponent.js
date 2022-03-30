@@ -53,19 +53,15 @@ class Contact extends Component {
                     <div className="col-12 col-sm-4 offset-sm-1">
                         <h5>Our Address</h5>
                         <address>
-                            121, Clear Water Bay Road
+                            42 Fifth Avenue,
                             <br />
-                            Clear Water Bay, Kowloon
+                            New York, NY 10011
                             <br />
-                            HONG KONG
-                            <br />
-                            <i className="fa fa-phone"></i>: +852 1234 5678
-                            <br />
-                            <i className="fa fa-fax"></i>: +852 8765 4321
+                            <i className="fa fa-phone"></i>: (917) 555 5555
                             <br />
                             <i className="fa fa-envelope"></i>:{" "}
-                            <a href="mailto:confusion@food.net">
-                                confusion@food.net
+                            <a href="mailto:wilsonzanea@gmail.com">
+                                wilsonzanea@gmail.com
                             </a>
                         </address>
                     </div>
