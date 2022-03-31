@@ -177,8 +177,6 @@ class Contact extends Component {
                                         placeholder="Tel. Number"
                                         className="form-control"
                                         validators={{
-                                            required,
-                                            minLength: minLength(3),
                                             maxLength: maxLength(15),
                                             isNumber,
                                         }}
@@ -188,7 +186,6 @@ class Contact extends Component {
                                         model=".telnum"
                                         show="touched"
                                         messages={{
-                                            required: "Required",
                                             minLength:
                                                 "Must be greater than 2 numbers",
                                             maxLength:
@@ -219,7 +216,7 @@ class Contact extends Component {
                                         model=".email"
                                         show="touched"
                                         messages={{
-                                            required: "Required",
+                                            required: "Required ",
                                             validEmail: "Invalid Email Address",
                                         }}
                                     />
