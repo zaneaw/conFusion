@@ -2,7 +2,6 @@ import React from "react";
 import {
     Card,
     CardImg,
-    CardImgOverlay,
     CardTitle,
     Breadcrumb,
     BreadcrumbItem,
@@ -12,13 +11,14 @@ import { Loading } from "./LoadingComponent";
 import { baseUrl } from "../shared/baseUrl";
 
 function RenderMenuItem({ dish, onClick }) {
+    console.log(dish.image);
     return (
         <Card>
             <Link to={`/menu/${dish._id}`}>
                 <CardTitle>{dish.name}</CardTitle>
                 <CardImg
                     width="100%"
-                    src={baseUrl + dish.image}
+                    src={`${baseUrl}images/${dish.image}`}
                     alt={dish.name}
                 />
             </Link>

@@ -19,7 +19,7 @@ function RenderLeader({ leader }) {
                 <img
                     object
                     className="about--image"
-                    src={baseUrl + leader.image}
+                    src={`${baseUrl}images/${leader.image}`}
                     alt={leader.name}
                 />
             </Media>
