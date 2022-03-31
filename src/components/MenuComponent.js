@@ -15,14 +15,12 @@ function RenderMenuItem({ dish, onClick }) {
     return (
         <Card>
             <Link to={`/menu/${dish._id}`}>
+                <CardTitle>{dish.name}</CardTitle>
                 <CardImg
                     width="100%"
                     src={baseUrl + dish.image}
                     alt={dish.name}
                 />
-                <CardImgOverlay>
-                    <CardTitle>{dish.name}</CardTitle>
-                </CardImgOverlay>
             </Link>
         </Card>
     );
