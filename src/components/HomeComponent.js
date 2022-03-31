@@ -7,11 +7,12 @@ import {
     CardTitle,
     CardSubtitle,
 } from "reactstrap";
+import { Link } from "react-router-dom";
 import { Loading } from "./LoadingComponent";
 import { baseUrl } from "../shared/baseUrl";
 import { FadeTransform } from "react-animation-components";
 
-function RenderCard({ item, isLoading, errMess }) {
+function RenderCard({ item, linkText, isLoading, errMess }) {
     if (isLoading) {
         return <Loading />;
     } else if (errMess) {
@@ -24,16 +25,45 @@ function RenderCard({ item, isLoading, errMess }) {
                     exitTransform: "scale(0.5) translateY(-50%)",
                 }}
             >
-                <Card>
-                    <CardImg src={baseUrl + item.image} alt={item.name} />
-                    <CardBody>
-                        <CardTitle>{item.name}</CardTitle>
-                        {item.designation ? (
-                            <CardSubtitle>{item.designation}</CardSubtitle>
-                        ) : null}
-                        <CardText>{item.description}</CardText>
-                    </CardBody>
-                </Card>
+                {linkText != "" ? (
+                    <Link to={`/${linkText}/`}>
+                        <Card>
+                            <CardImg
+                                className="home--image"
+                                src={baseUrl + item.image}
+                                alt={item.name}
+                            />
+                            <CardBody>
+                                <CardTitle>{item.name}</CardTitle>
+                                {item.designation ? (
+                                    <CardSubtitle>
+                                        {item.designation}
+                                    </CardSubtitle>
+                                ) : null}
+                                <CardText>
+                                    {item.description.slice(0, 170)}
+                                </CardText>
+                            </CardBody>
+                        </Card>
+                    </Link>
+                ) : (
+                    <Card>
+                        <CardImg
+                            className="home--image"
+                            src={baseUrl + item.image}
+                            alt={item.name}
+                        />
+                        <CardBody>
+                            <CardTitle>{item.name}</CardTitle>
+                            {item.designation ? (
+                                <CardSubtitle>{item.designation}</CardSubtitle>
+                            ) : null}
+                            <CardText>
+                                {item.description.slice(0, 170)}
+                            </CardText>
+                        </CardBody>
+                    </Card>
+                )}
             </FadeTransform>
         );
 }
@@ -41,10 +71,11 @@ function RenderCard({ item, isLoading, errMess }) {
 function Home(props) {
     return (
         <div className="container">
-            <div className="row align-items-start">
-                <div className="col-12 col-md m-1">
+            <div className="row align-items-center justify-content-center">
+                <div className="col-9 col-md m-1">
                     <RenderCard
                         item={props.dish}
+                        linkText="menu"
                         isLoading={props.dishesLoading}
                         errMess={props.dishesErrMess}
                     />
@@ -52,6 +83,7 @@ function Home(props) {
                 <div className="col-12 col-md m-1">
                     <RenderCard
                         item={props.promotion}
+                        linkText=""
                         isLoading={props.promosLoading}
                         errMess={props.promosErrMess}
                     />
@@ -59,6 +91,7 @@ function Home(props) {
                 <div className="col-12 col-md m-1">
                     <RenderCard
                         item={props.leader}
+                        linkText="aboutus"
                         isLoading={props.leaderLoading}
                         errMess={props.leaderErrMess}
                     />
