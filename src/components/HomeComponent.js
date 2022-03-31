@@ -12,7 +12,7 @@ import { Loading } from "./LoadingComponent";
 import { baseUrl } from "../shared/baseUrl";
 import { FadeTransform } from "react-animation-components";
 
-function RenderCard({ item, linkText, isLoading, errMess }) {
+function RenderCard({ item, isLoading, errMess }) {
     if (isLoading) {
         return <Loading />;
     } else if (errMess) {
@@ -25,45 +25,22 @@ function RenderCard({ item, linkText, isLoading, errMess }) {
                     exitTransform: "scale(0.5) translateY(-50%)",
                 }}
             >
-                {linkText != "" ? (
-                    <Link to={`/${linkText}/`}>
-                        <Card>
-                            <CardImg
-                                className="home--image"
-                                src={baseUrl + item.image}
-                                alt={item.name}
-                            />
-                            <CardBody>
-                                <CardTitle>{item.name}</CardTitle>
-                                {item.designation ? (
-                                    <CardSubtitle>
-                                        {item.designation}
-                                    </CardSubtitle>
-                                ) : null}
-                                <CardText>
-                                    {item.description.slice(0, 170)}
-                                </CardText>
-                            </CardBody>
-                        </Card>
-                    </Link>
-                ) : (
-                    <Card>
+                <Card>
+                    <div className="home--image--container">
                         <CardImg
                             className="home--image"
-                            src={baseUrl + item.image}
+                            src={`${baseUrl}images/${item.image}`}
                             alt={item.name}
                         />
-                        <CardBody>
-                            <CardTitle>{item.name}</CardTitle>
-                            {item.designation ? (
-                                <CardSubtitle>{item.designation}</CardSubtitle>
-                            ) : null}
-                            <CardText>
-                                {item.description.slice(0, 170)}
-                            </CardText>
-                        </CardBody>
-                    </Card>
-                )}
+                    </div>
+                    <CardBody className="home--card-body">
+                        <CardTitle>{item.name}</CardTitle>
+                        {item.designation ? (
+                            <CardSubtitle>{item.designation}</CardSubtitle>
+                        ) : null}
+                        <CardText>{item.description}</CardText>
+                    </CardBody>
+                </Card>
             </FadeTransform>
         );
 }
@@ -72,29 +49,30 @@ function Home(props) {
     return (
         <div className="container">
             <div className="row align-items-center justify-content-center">
-                <div className="col-9 col-md m-1">
-                    <RenderCard
-                        item={props.dish}
-                        linkText="menu"
-                        isLoading={props.dishesLoading}
-                        errMess={props.dishesErrMess}
-                    />
+                <div className="col-12 col-md m-1 text-decoration-none home--cards">
+                    <Link to="menu/">
+                        <RenderCard
+                            item={props.dish}
+                            isLoading={props.dishesLoading}
+                            errMess={props.dishesErrMess}
+                        />
+                    </Link>
                 </div>
-                <div className="col-12 col-md m-1">
+                <div className="col-12 col-md m-1 text-decoration-none home--cards">
                     <RenderCard
                         item={props.promotion}
-                        linkText=""
                         isLoading={props.promosLoading}
                         errMess={props.promosErrMess}
                     />
                 </div>
-                <div className="col-12 col-md m-1">
-                    <RenderCard
-                        item={props.leader}
-                        linkText="aboutus"
-                        isLoading={props.leaderLoading}
-                        errMess={props.leaderErrMess}
-                    />
+                <div className="col-12 col-md m-1 text-decoration-none home--cards">
+                    <Link to="aboutus/">
+                        <RenderCard
+                            item={props.leader}
+                            isLoading={props.leaderLoading}
+                            errMess={props.leaderErrMess}
+                        />
+                    </Link>
                 </div>
             </div>
         </div>
