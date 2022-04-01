@@ -10,16 +10,30 @@ function Footer(props) {
                         <h5>Links</h5>
                         <ul className="list-unstyled">
                             <li>
-                                <Link to="/home">Home</Link>
+                                <Link to="/home" className="footer--list-item">
+                                    Home
+                                </Link>
                             </li>
                             <li>
-                                <Link to="/aboutus">About Us</Link>
+                                <Link
+                                    to="/aboutus"
+                                    className="footer--list-item"
+                                >
+                                    About Us
+                                </Link>
                             </li>
                             <li>
-                                <Link to="/menu">Menu</Link>
+                                <Link to="/menu" className="footer--list-item">
+                                    Menu
+                                </Link>
                             </li>
                             <li>
-                                <Link to="/contactus">Contact Us</Link>
+                                <Link
+                                    to="/contactus"
+                                    className="footer--list-item"
+                                >
+                                    Contact Us
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -33,7 +47,7 @@ function Footer(props) {
                             <i className="fa fa-phone fa-lg"></i> (917) 555-5555
                             <br />
                             <i className="fa fa-envelope fa-lg"></i>{" "}
-                            <a href="mailto:wilsonzanea@gmail.com">
+                            <a href="mailto:wilsonzanea@gmail.com" className="footer--email">
                                 wilsonzanea@gmail.com
                             </a>
                         </address>
