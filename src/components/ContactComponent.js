@@ -10,6 +10,13 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Control, Form, Errors } from "react-redux-form";
+import { compose, withProps } from "recompose";
+import {
+    withScriptjs,
+    withGoogleMap,
+    GoogleMap,
+    Marker,
+} from "react-google-maps";
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -17,6 +24,33 @@ const minLength = (len) => (val) => val && val.length >= len;
 const isNumber = (val) => !isNaN(Number(val));
 const validEmail = (val) =>
     /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
+
+const MyMapComponent = compose(
+    withProps({
+        googleMapURL:
+            "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
+        loadingElement: <div style={{ height: "100%" }} />,
+        containerElement: <div style={{ height: "400px" }} />,
+        mapElement: <div style={{ height: "100%" }} />,
+    }),
+    withScriptjs,
+    withGoogleMap
+)((props) => (
+    <GoogleMap
+        defaultZoom={17}
+        defaultCenter={{
+            lat: 40.73386147314528,
+            lng: -73.99539390165678,
+        }}
+    >
+        <Marker
+            position={{
+                lat: 40.73386147314528,
+                lng: -73.99539390165678,
+            }}
+        />
+    </GoogleMap>
+));
 
 class Contact extends Component {
     constructor(props) {
@@ -30,6 +64,14 @@ class Contact extends Component {
         this.props.postFeedback(values);
         this.props.resetFeedbackForm();
     }
+
+    static mapProps = {
+        center: {
+            lat: 40.73386147314528,
+            lng: -73.99539390165678,
+        },
+        zoom: 11,
+    };
 
     render() {
         return (
@@ -52,24 +94,19 @@ class Contact extends Component {
                     </div>
                     <div className="col-12 col-sm-4 offset-sm-1">
                         <h5>Our Address</h5>
-                        <address>
+                        <address className="contact--address">
                             42 Fifth Avenue,
                             <br />
                             New York, NY 10011
                             <br />
-                            <i className="fa fa-phone"></i>: (917) 555 5555
+                            <i className="fa fa-phone"></i> (917) 555 5555
                             <br />
-                            <i className="fa fa-envelope"></i>:{" "}
+                            <i className="fa fa-envelope"></i>{" "}
                             <a href="mailto:wilsonzanea@gmail.com">
                                 wilsonzanea@gmail.com
                             </a>
                         </address>
-                    </div>
-                    <div className="col-12 col-sm-6 offset-sm-1">
-                        <h5>Map of our Location</h5>
-                    </div>
-                    <div className="col-12 col-sm-11 offset-sm-1">
-                        <div className="btn-group" role="group">
+                        <div className="btn-group mt-5" role="group">
                             <a
                                 role="button"
                                 className="btn btn-primary"
@@ -93,6 +130,11 @@ class Contact extends Component {
                             </a>
                         </div>
                     </div>
+                    <div className="col-12 col-sm-6 offset-sm-1">
+                        <h5>Map of our Location</h5>
+                        <MyMapComponent />
+                    </div>
+                    <div className="col-12 col-sm-11 offset-sm-1"></div>
                 </div>
                 <div className="row row-content">
                     <div className="col-12">
