@@ -14,6 +14,18 @@
     color: #7d1128;
 }
 
+.contact--feedback-button {
+    color: #fff;
+    background-color: #7d1128;
+    border: 1px solid transparent;
+    
+}
+
+.contact--feedback-button:hover {
+    background-color: #63081c;
+    border: 1px solid transparent;
+}
+
 .footer {
     background-color: #c41e3d;
     margin: 0px auto;
