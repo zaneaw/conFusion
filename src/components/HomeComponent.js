@@ -48,7 +48,7 @@ function RenderCard({ item, isLoading, errMess }) {
 function Home(props) {
     return (
         <div className="container">
-            <div className="row align-items-center justify-content-center">
+            <div className="row align-items-flex-start justify-content-center">
                 <div className="col-12 col-md m-1 text-decoration-none home--cards">
                     <Link to="menu/">
                         <RenderCard
