@@ -96,7 +96,7 @@ function About(props) {
                 </div>
                 <div className="col-12 col-md-5">
                     <Card>
-                        <CardHeader className="bg-primary text-white">
+                        <CardHeader className="text-white about--table-head">
                             Facts At a Glance
                         </CardHeader>
                         <CardBody>
