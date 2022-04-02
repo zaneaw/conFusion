@@ -13,9 +13,9 @@ import { baseUrl } from "../shared/baseUrl";
 function RenderMenuItem({ dish, onClick }) {
     console.log(dish.image);
     return (
-        <Card>
-            <Link to={`/menu/${dish._id}`}>
-                <CardTitle>{dish.name}</CardTitle>
+        <Card className="menu--card">
+            <Link to={`/menu/${dish._id}`} className="menu--link">
+                <CardTitle className="menu--dish-name">{dish.name}</CardTitle>
                 <CardImg
                     width="100%"
                     src={`${baseUrl}images/${dish.image}`}
