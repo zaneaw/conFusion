@@ -25,7 +25,7 @@ export const Feedback = (
             };
 
         case ActionTypes.ADD_COMMENT:
-            var comment = action.payload;
+            var feedback = action.payload;
             console.log("STATE: ", state)
             return { ...state, feedback: state.feedback.concat(feedback) };
 
