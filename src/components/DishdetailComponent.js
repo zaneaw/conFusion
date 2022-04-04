@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import {
     Card,
     CardImg,
-    CardImgOverlay,
     CardText,
     CardBody,
     CardTitle,
@@ -39,7 +38,7 @@ function RenderDish({ dish, favorite, postFavorite }) {
                         color="primary"
                         onClick={() =>
                             favorite
-                                ? console.log("Already favorite")
+                                ? console.log("Already favorited")
                                 : postFavorite(dish._id)
                         }
                     >
