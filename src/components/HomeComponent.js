@@ -26,13 +26,11 @@ function RenderCard({ item, isLoading, errMess }) {
                 }}
             >
                 <Card>
-                    <div className="home--image--container">
-                        <CardImg
-                            className="home--image"
-                            src={`${baseUrl}images/${item.image}`}
-                            alt={item.name}
-                        />
-                    </div>
+                    <CardImg
+                        className="home--image"
+                        src={`${baseUrl}images/${item.image}`}
+                        alt={item.name}
+                    />
                     <CardBody className="home--card-body">
                         <CardTitle>{item.name}</CardTitle>
                         {item.designation ? (
