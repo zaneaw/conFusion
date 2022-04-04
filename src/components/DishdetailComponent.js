@@ -33,24 +33,27 @@ function RenderDish({ dish, favorite, postFavorite }) {
                 }}
             >
                 <Card>
-                    <CardImg top src={baseUrl + dish.image} alt={dish.name} />
-                    <CardImgOverlay>
-                        <Button
-                            outline
-                            color="primary"
-                            onClick={() =>
-                                favorite
-                                    ? console.log("Already favorite")
-                                    : postFavorite(dish._id)
-                            }
-                        >
-                            {favorite ? (
-                                <span className="fa fa-heart"></span>
-                            ) : (
-                                <span className="fa fa-heart-o"></span>
-                            )}
-                        </Button>
-                    </CardImgOverlay>
+                    <Button
+                        outline
+                        className="detail--comment-modal-button"
+                        color="primary"
+                        onClick={() =>
+                            favorite
+                                ? console.log("Already favorite")
+                                : postFavorite(dish._id)
+                        }
+                    >
+                        {favorite ? (
+                            <span className="fa fa-heart"></span>
+                        ) : (
+                            <span className="fa fa-heart-o"></span>
+                        )}
+                    </Button>
+                    <CardImg
+                        top
+                        src={`${baseUrl}images/${dish.image}`}
+                        alt={dish.name}
+                    />
                     <CardBody>
                         <CardTitle>{dish.name}</CardTitle>
                         <CardText>{dish.description}</CardText>
@@ -173,7 +176,10 @@ class CommentForm extends Component {
                                     />
                                 </Col>
                             </Row>
-                            <Button type="submit" className="bg-primary">
+                            <Button
+                                type="submit"
+                                className="detail--comment-button"
+                            >
                                 Submit
                             </Button>
                         </LocalForm>

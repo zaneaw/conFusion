@@ -14,16 +14,20 @@
     color: #7d1128;
 }
 
-.contact--feedback-button {
+.contact--feedback-button,
+.detail--comment-button {
     color: #fff;
     background-color: #7d1128;
     border: 1px solid transparent;
-    
 }
 
 .contact--feedback-button:hover {
     background-color: #63081c;
     border: 1px solid transparent;
+}
+
+.detail--comment-modal-button {
+    margin-right: auto;
 }
 
 .footer {
