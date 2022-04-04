@@ -8,7 +8,7 @@ function RenderMenuItem({ dish, deleteFavorite }) {
     return (
         <Media tag="li">
             <Media left middle>
-                <Media object src={baseUrl + dish.image} alt={dish.name} />
+                <Media object src={`${baseUrl}images/${dish.image}`} alt={dish.name} className="favorite--image" />
             </Media>
             <Media body className="ml-5">
                 <Media heading>{dish.name}</Media>

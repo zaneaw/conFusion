@@ -71,8 +71,6 @@ address {
 }
 
 .home--image {
-    max-width: 100%;
-    max-height: 100%;
     aspect-ratio: 1 / 1;
 }
 
@@ -99,6 +97,12 @@ address {
 
 .contact--address {
     color: #000;
+}
+
+.favorite--image {
+    width: 200px;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
 }
 
 .menu--dish-name {
