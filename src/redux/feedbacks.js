@@ -23,12 +23,6 @@ export const Feedback = (
                 errMess: action.payload,
                 feedback: [],
             };
-
-        case ActionTypes.ADD_COMMENT:
-            var feedback = action.payload;
-            console.log("STATE: ", state)
-            return { ...state, feedback: state.feedback.concat(feedback) };
-
         default:
             return state;
     }

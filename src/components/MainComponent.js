@@ -16,6 +16,7 @@ import {
     fetchComments,
     fetchPromos,
     fetchLeaders,
+    signupUser,
     loginUser,
     logoutUser,
     fetchFavorites,
@@ -53,6 +54,7 @@ const mapDispatchToProps = (dispatch) => ({
     },
     fetchLeaders: () => dispatch(fetchLeaders()),
     postFeedback: (feedback) => dispatch(postFeedback(feedback)),
+    signupUser: (creds) => dispatch(signupUser(creds)),
     loginUser: (creds) => dispatch(loginUser(creds)),
     logoutUser: () => dispatch(logoutUser()),
     fetchFavorites: () => dispatch(fetchFavorites()),
@@ -160,6 +162,7 @@ class Main extends Component {
             <div>
                 <Header
                     auth={this.props.auth}
+                    signupUser={this.props.signupUser}
                     loginUser={this.props.loginUser}
                     logoutUser={this.props.logoutUser}
                 />

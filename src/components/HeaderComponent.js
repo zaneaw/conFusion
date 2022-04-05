@@ -27,6 +27,7 @@ class Header extends Component {
         };
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.handleSignup = this.handleSignup.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
     }
@@ -40,6 +41,22 @@ class Header extends Component {
     toggleModal() {
         this.setState({
             isModalOpen: !this.state.isModalOpen,
+        });
+    }
+
+    toggleSignup() {
+        this.s
+    }
+
+    handleSignup() {
+        this.toggleModal();
+        this.props.signupUser({
+            username: this.username.value,
+            password: this.password.value,
+            email: this.email.value,
+            firstname: this.firstname.value,
+            lastname: this.lastname.value,
+            admin: false,
         });
     }
 
@@ -149,9 +166,14 @@ class Header extends Component {
                     <div className="container">
                         <div className="row row-header">
                             <div className="col-12">
-                                <h1>Pizza <small>by</small> Zane</h1>
+                                <h1>
+                                    Pizza <small>by</small> Zane
+                                </h1>
                                 <p>
-                                    We take inspiration from the World's best pizza, and create a unique pizza eating experience. Our lipsmacking creations will tickle your culinary senses!
+                                    We take inspiration from the World's best
+                                    pizza, and create a unique pizza eating
+                                    experience. Our lipsmacking creations will
+                                    tickle your culinary senses!
                                 </p>
                             </div>
                         </div>
@@ -186,7 +208,7 @@ class Header extends Component {
                                     }
                                 />
                             </FormGroup>
-                            <FormGroup check>
+                            <FormGroup check className="header--remember">
                                 <Label check>
                                     <Input
                                         type="checkbox"
@@ -198,13 +220,16 @@ class Header extends Component {
                                     Remember me
                                 </Label>
                             </FormGroup>
-                            <Button
-                                type="submit"
-                                value="submit"
-                                color="primary"
-                            >
-                                Login
-                            </Button>
+                            <span>
+                                <Button
+                                    type="submit"
+                                    value="submit"
+                                    color="primary"
+                                >
+                                    Login
+                                </Button>
+                                {" "}Don't have an account? <a>Signup</a>
+                            </span>
                         </Form>
                     </ModalBody>
                 </Modal>

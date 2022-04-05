@@ -252,6 +252,53 @@ export const postFeedback = (feedback) => (dispatch) => {
         });
 };
 
+export const signupError = (message) => {
+    return { type: ActionTypes.SIGNUP_FAILURE, message };
+};
+
+export const signupUser = (creds) => (dispatch) => {
+    const newUser = {
+        username: creds.username,
+        password: creds.password,
+        email: creds.email,
+        firstname: creds.firstname,
+        lastname: creds.lastname,
+    };
+
+    return fetch(baseUrl + "users/signup", {
+        method: "POST",
+        body: JSON.stringify(newUser),
+        headers: {
+            "Content-Type": "application/json",
+        },
+        credentials: "same-origin",
+    })
+        .then(
+            (response) => {
+                if (response.ok) {
+                    return response;
+                } else {
+                    const error = new Error(
+                        `Error ${response.status}: ${response.statusText}`
+                    );
+                    error.response = response;
+                    throw error;
+                }
+            },
+            (error) => {
+                throw error;
+            }
+        )
+        .then((response) => response.json())
+        .then((response) => dispatch(signupUser(response)))
+        .catch((error) => {
+            console.log(`New User Error: ${error.message}`);
+            alert(
+                `Your New User Request could not be posted\nError: $${error.message}`
+            );
+        });
+};
+
 export const requestLogin = (creds) => {
     return {
         type: ActionTypes.LOGIN_REQUEST,
