@@ -219,7 +219,6 @@ export const postFeedback = (feedback) => (dispatch) => {
         telnum: feedback.telnum,
         email: feedback.email,
     };
-    console.log("FEEDBACK HERE:", newFeedback);
 
     return fetch(baseUrl + "feedback", {
         method: "POST",
