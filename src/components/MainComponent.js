@@ -5,6 +5,7 @@ import Menu from "./MenuComponent";
 import Contact from "./ContactComponent";
 import DishDetail from "./DishdetailComponent";
 import Favorites from "./FavoriteComponent";
+import Signup from "./SignupComponent";
 import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
@@ -45,6 +46,9 @@ const mapDispatchToProps = (dispatch) => ({
     },
     resetFeedbackForm: () => {
         dispatch(actions.reset("feedback"));
+    },
+    resetSignupForm: () => {
+        dispatch(actions.reset("signup"));
     },
     fetchComments: () => {
         dispatch(fetchComments());
@@ -162,7 +166,6 @@ class Main extends Component {
             <div>
                 <Header
                     auth={this.props.auth}
-                    signupUser={this.props.signupUser}
                     loginUser={this.props.loginUser}
                     logoutUser={this.props.logoutUser}
                 />
@@ -216,11 +219,23 @@ class Main extends Component {
                                     />
                                 )}
                             />
+                            <Route
+                                exact
+                                path="/users/signup"
+                                component={() => (
+                                    <Signup
+                                        resetSignupForm={
+                                            this.props.resetSignupForm
+                                        }
+                                        signupUser={this.props.signupUser}
+                                    />
+                                )}
+                            />
                             <Redirect to="/home" />
                         </Switch>
                     </CSSTransition>
                 </TransitionGroup>
-                <Footer />
+                <Footer auth={this.props.auth} />
             </div>
         );
     }

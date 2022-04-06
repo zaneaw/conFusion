@@ -256,6 +256,11 @@ export const signupError = (message) => {
     return { type: ActionTypes.SIGNUP_FAILURE, message };
 };
 
+export const signupUserSuccess = (newUser) => ({
+    type: ActionTypes.SIGNUP_SUCCESS,
+    payload: newUser,
+});
+
 export const signupUser = (creds) => (dispatch) => {
     const newUser = {
         username: creds.username,
@@ -263,8 +268,9 @@ export const signupUser = (creds) => (dispatch) => {
         email: creds.email,
         firstname: creds.firstname,
         lastname: creds.lastname,
+        admin: creds.admin,
     };
-
+    console.log(JSON.stringify(newUser));
     return fetch(baseUrl + "users/signup", {
         method: "POST",
         body: JSON.stringify(newUser),
@@ -290,11 +296,11 @@ export const signupUser = (creds) => (dispatch) => {
             }
         )
         .then((response) => response.json())
-        .then((response) => dispatch(signupUser(response)))
+        .then((response) => dispatch(signupUserSuccess(response)))
         .catch((error) => {
             console.log(`New User Error: ${error.message}`);
             alert(
-                `Your New User Request could not be posted\nError: $${error.message}`
+                `Your New User Request could not be posted\nError: ${error.message}`
             );
         });
 };

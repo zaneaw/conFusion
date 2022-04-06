@@ -15,7 +15,9 @@
 }
 
 .contact--feedback-button,
-.detail--comment-button {
+.detail--comment-button,
+.header--login-button,
+.signup--button {
     color: #fff;
     background-color: #7d1128;
     border: 1px solid transparent;
@@ -37,6 +39,11 @@
     color: #fff;
 }
 
+.header--div {
+    position: absolute;
+    background-color: pink;
+    color: aqua;
+}
 
 .jumbotron {
     padding: 70px 30px 70px 30px;

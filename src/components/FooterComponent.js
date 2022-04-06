@@ -35,6 +35,16 @@ function Footer(props) {
                                     Contact Us
                                 </Link>
                             </li>
+                            {!props.auth.isAuthenticated && (
+                                <li>
+                                    <Link
+                                        to="/users/signup"
+                                        className="footer--list-item"
+                                    >
+                                        Signup
+                                    </Link>
+                                </li>
+                            )}
                         </ul>
                     </div>
                     <div className="col-7 col-sm-5">
@@ -47,7 +57,10 @@ function Footer(props) {
                             <i className="fa fa-phone fa-lg"></i> (917) 555-5555
                             <br />
                             <i className="fa fa-envelope fa-lg"></i>{" "}
-                            <a href="mailto:wilsonzanea@gmail.com" className="footer--email">
+                            <a
+                                href="mailto:wilsonzanea@gmail.com"
+                                className="footer--email"
+                            >
                                 wilsonzanea@gmail.com
                             </a>
                         </address>

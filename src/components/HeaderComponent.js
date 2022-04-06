@@ -11,12 +11,11 @@ import {
     Modal,
     ModalHeader,
     ModalBody,
-    Form,
     FormGroup,
     Input,
     Label,
 } from "reactstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 class Header extends Component {
     constructor(props) {
@@ -27,7 +26,6 @@ class Header extends Component {
         };
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
-        this.handleSignup = this.handleSignup.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
     }
@@ -44,21 +42,6 @@ class Header extends Component {
         });
     }
 
-    toggleSignup() {
-        this.s
-    }
-
-    handleSignup() {
-        this.toggleModal();
-        this.props.signupUser({
-            username: this.username.value,
-            password: this.password.value,
-            email: this.email.value,
-            firstname: this.firstname.value,
-            lastname: this.lastname.value,
-            admin: false,
-        });
-    }
 
     handleLogin(event) {
         this.toggleModal();
@@ -185,7 +168,7 @@ class Header extends Component {
                 >
                     <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
                     <ModalBody>
-                        <Form onSubmit={this.handleLogin}>
+                        <form onSubmit={this.handleLogin}>
                             <FormGroup>
                                 <Label htmlFor="username">Username</Label>
                                 <Input
@@ -220,17 +203,24 @@ class Header extends Component {
                                     Remember me
                                 </Label>
                             </FormGroup>
+                            <br />
                             <span>
                                 <Button
                                     type="submit"
                                     value="submit"
-                                    color="primary"
+                                    className="header--login-button"
                                 >
                                     Login
-                                </Button>
-                                {" "}Don't have an account? <a>Signup</a>
+                                </Button>{" "}
+                                Don't have an account?{" "}
+                                <Link
+                                    to="/users/signup"
+                                    onClick={this.toggleModal}
+                                >
+                                    Signup
+                                </Link>
                             </span>
-                        </Form>
+                        </form>
                     </ModalBody>
                 </Modal>
             </React.Fragment>

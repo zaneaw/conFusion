@@ -4,6 +4,16 @@ export const InitialFeedback = {
     telnum: "",
     email: "",
     agree: false,
-    contactType: "Tel.",
+    contactType: "Email",
     message: "",
+};
+
+export const InitialSignup = {
+    firstname: "",
+    lastname: "",
+    username: "",
+    email: "",
+    admin: false,
+    password: "",
+    password2: "",
 };

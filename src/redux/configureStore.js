@@ -5,10 +5,11 @@ import { Comments } from "./comments";
 import { Promotions } from "./promotions";
 import { Leaders } from "./leaders";
 import { favorites } from "./favorites";
+import { signup } from "./signup";
 import { Auth } from "./auth";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
-import { InitialFeedback } from "./forms";
+import { InitialFeedback, InitialSignup } from "./forms";
 
 export const ConfigureStore = () => {
     const store = createStore(
@@ -21,7 +22,8 @@ export const ConfigureStore = () => {
             favorites,
             ...createForms({
                 feedback: InitialFeedback,
-            }),
+                signup: InitialSignup
+            })
         }),
         applyMiddleware(thunk, logger)
     );
