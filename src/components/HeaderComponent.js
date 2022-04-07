@@ -66,8 +66,6 @@ class Header extends Component {
                             <img
                                 className="header--image"
                                 src="/assets/images/logo.png"
-                                height="30"
-                                width="41"
                                 alt="Ristorante Con Fusion"
                             />
                         </NavbarBrand>
