@@ -77,8 +77,7 @@ function RenderComments({ comments, postComment, dishId }) {
                                         <p>{comment.comment}</p>
                                         <p>{comment.rating} stars</p>
                                         <p>
-                                            -- {comment.author.firstname}{" "}
-                                            {comment.author.lastname} ,{" "}
+                                            -- {comment.author.username} ,{" "}
                                             {new Intl.DateTimeFormat("en-US", {
                                                 year: "numeric",
                                                 month: "short",
