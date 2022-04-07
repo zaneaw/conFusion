@@ -297,10 +297,11 @@ export const signupUser = (creds) => (dispatch) => {
         )
         .then((response) => response.json())
         .then((response) => dispatch(signupUserSuccess(response)))
-        .catch((error) => {
-            console.log(`New User Error: ${error.message}`);
+        .catch((err) => {
+            console.log(`New User Error:\n${err.name} ${err.message}`);
+            dispatch(signupError(err.message))
             alert(
-                `Your New User Request could not be posted\nError: ${error.message}`
+                `Your New User Request could not be posted\n${err.message}`
             );
         });
 };
