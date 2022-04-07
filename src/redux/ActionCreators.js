@@ -270,7 +270,7 @@ export const signupUser = (creds) => (dispatch) => {
         lastname: creds.lastname,
         admin: creds.admin,
     };
-    console.log(JSON.stringify(newUser));
+
     return fetch(baseUrl + "users/signup", {
         method: "POST",
         body: JSON.stringify(newUser),
