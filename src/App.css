@@ -74,6 +74,10 @@ address {
     background-color: #7d1128;
 }
 
+.signup--toggle {
+    margin-left: 20px;
+}
+
 .header--image {
     margin-left: 10px;
     height: 47px;

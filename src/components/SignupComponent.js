@@ -8,6 +8,7 @@ import {
     Label,
     Col,
     Button,
+    Input,
 } from "reactstrap";
 
 const required = (val) => val && val.length;
@@ -19,8 +20,17 @@ const validEmail = (val) =>
 class Signup extends Component {
     constructor(props) {
         super(props);
-
+        this.state = {
+            isPasswordVisible: false,
+        };
+        this.togglePassword = this.togglePassword.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    togglePassword() {
+        this.setState({
+            isPasswordVisible: !this.state.isPasswordVisible,
+        });
     }
 
     handleSubmit(values) {
@@ -151,46 +161,63 @@ class Signup extends Component {
                                         model=".password"
                                         id="password"
                                         name="password"
+                                        type={
+                                            this.state.isPasswordVisible
+                                                ? "text"
+                                                : "password"
+                                        }
                                         placeholder="Password"
-                                        className="form-control"
-                                        validators={{
-                                            required,
-                                        }}
+                                        className="form-control signup--password"
+                                        validators={{ required }}
                                     />
                                     <Errors
                                         className="text-danger"
                                         model=".password"
                                         show="touched"
                                         messages={{
-                                            required: "Required",
+                                            required: "Required ",
+                                            matchPasswords:
+                                                "Passwords don't match!",
                                         }}
                                     />
                                 </Col>
                             </Row>
                             <Row className="form-group">
-                                <Label htmlFor="password2" md={2}>
+                                <Label htmlFor="confirmPassword" md={2}>
                                     Confirm Password
                                 </Label>
                                 <Col md={10}>
                                     <Control.text
-                                        model=".password2"
-                                        id="password2"
-                                        name="password2"
+                                        model=".confirmPassword"
+                                        id="confirmPassword"
+                                        name="confirmPassword"
+                                        type={
+                                            this.state.isPasswordVisible
+                                                ? "text"
+                                                : "password"
+                                        }
                                         placeholder="Confirm Password"
-                                        className="form-control"
-                                        validators={{
-                                            required,
-                                        }}
+                                        className="form-control signup--password"
+                                        validators={{ required }}
                                     />
                                     <Errors
                                         className="text-danger"
-                                        model=".password2"
+                                        model=".confirmPassword"
                                         show="touched"
                                         messages={{
-                                            required: "Required",
+                                            required: "Required ",
+                                            matchPasswords:
+                                                "Passwords don't match!",
                                         }}
                                     />
                                 </Col>
+                            </Row>
+                            <Row className="form-group signup--toggle">
+                                <Input
+                                    type="checkbox"
+                                    onClick={this.togglePassword}
+                                />
+                                <span className="signup--toggle-text">Show Password</span>
                             </Row>
                             <Button
                                 type="submit"
