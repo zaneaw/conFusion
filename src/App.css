@@ -76,6 +76,8 @@ address {
 
 .header--image {
     margin-left: 10px;
+    height: 47px;
+    width: 46px;
 }
 
 .home--image {
