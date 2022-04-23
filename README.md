@@ -1,4 +1,4 @@
-# ============> [View Video Walkthrough](https://youtu.be/iS4MRaI6DGU) <============
+# =======> [View Video Walkthrough](https://youtu.be/iS4MRaI6DGU) <=======
     
 
 ## Getting Started with Create React App
